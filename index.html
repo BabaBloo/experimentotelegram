@@ -22,34 +22,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-  <!-- ✅ Archivo con frases -->
-  <script src="frases.js"></script>
+ 
 
 
 
-  <script defer>
-  document.addEventListener('DOMContentLoaded', function () {
-    const boton = document.getElementById('whatsappButton');
-
-    // Antes del click, seteamos el href
-    boton.addEventListener('pointerdown', function() {
-      const nombre = document.getElementById('nombreUsuario').value.trim();
-      if (!nombre) {
-        boton.setAttribute('href', '#');
-        return;
-      }
-
-      const frase = window.frases[Math.floor(Math.random() * window.frases.length)];
-      const mensaje = encodeURIComponent(frase + " " + nombre);
-      const enlace = "https://t.me/juancarga23?text=" + mensaje;
-
-      // Seteamos el href del <a>, GTM lo va a leer correctamente
-      boton.setAttribute('href', enlace);
+  
+   <script>
+    document.getElementById("whatsappButton").addEventListener("click", function() {
+      var username = document.getElementById("usernameInput").value;
+      var telefono = "+525545184825";
+      var mensaje = "buenas! me gustaría crear un usuario. Mi nombre es: " + username;
+      var link = "https://wa.me/" + telefono + "?text=" + encodeURIComponent(mensaje);
+      window.open(link, '_blank');
     });
+  </script>
+ 
 
-   
-  });
-</script>
 </head>
 
 <body>
