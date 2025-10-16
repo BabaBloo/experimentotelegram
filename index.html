@@ -22,14 +22,41 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
- 
+  <!-- ✅ Archivo con frases -->
+  <script src="frases.js"></script>
 
 
 
-  
+  <script defer>
+  document.addEventListener('DOMContentLoaded', function () {
+    const boton = document.getElementById('whatsappButton');
 
- 
+    // Antes del click, seteamos el href
+    boton.addEventListener('pointerdown', function() {
+      const nombre = document.getElementById('nombreUsuario').value.trim();
+      if (!nombre) {
+        boton.setAttribute('href', '#');
+        return;
+      }
 
+      const frase = window.frases[Math.floor(Math.random() * window.frases.length)];
+      const mensaje = encodeURIComponent(frase + " " + nombre);
+      const enlace = "https://t.me/juancarga23?text=" + mensaje;
+
+      // Seteamos el href del <a>, GTM lo va a leer correctamente
+      boton.setAttribute('href', enlace);
+    });
+
+    // Validamos en el click para que no navegue si no hay nombre
+    boton.addEventListener('click', function(e) {
+      const nombre = document.getElementById('nombreUsuario').value.trim();
+      if (!nombre) {
+        e.preventDefault();
+        alert("Por favor escribe tu nombre antes de continuar.");
+      }
+    });
+  });
+</script>
 </head>
 
 <body>
@@ -51,7 +78,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p>50% BONO DE BIENVENIDA EN TELEGRAM!</p>
   </div>
 
-
+  <!-- ✅ Nombre Input -->
+  <div style="text-align: center; margin: 20px;">
+    <input type="text" id="nombreUsuario" placeholder="Escribe tu nombre aquí" style="padding: 10px; width: 80%; max-width: 300px;"/>
+  </div>
 
   <!-- ✅ WhatsApp Button -->
   <div class="whatsapp">
@@ -60,16 +90,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <img src="./img/telegram-logo-944.png" alt="WhatsApp Logo">
     </a>
   </div>
-
-     <script>
-    document.getElementById("whatsappButton").addEventListener("click", function() {
-      var username = document.getElementById("usernameInput").value;
-      var telefono = "+525545184825";
-      var mensaje = "buenas! me gustaría crear un usuario. Mi nombre es: " + username;
-      var link = "https://wa.me/" + telefono + "?text=" + encodeURIComponent(mensaje);
-      window.open(link, '_blank');
-    });
-  </script>
 
   <!-- Minimum Deposit Information -->
   <div class="MINIMO">
